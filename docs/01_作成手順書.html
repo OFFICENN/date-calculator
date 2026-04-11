@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>年齢・日数計算アプリ 作成手順書</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "BIZ UDPGothic", Meiryo, sans-serif; line-height: 1.8; color: #1a1a2e; background: #f8f9fc; padding: 2rem 1rem; }
+    .container { max-width: 860px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.06); padding: 3rem; }
+    h1 { font-size: 1.8rem; color: #4f46e5; border-bottom: 3px solid #4f46e5; padding-bottom: .5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.35rem; color: #312e81; margin-top: 2.5rem; margin-bottom: .75rem; padding-left: .75rem; border-left: 4px solid #6366f1; }
+    h3 { font-size: 1.1rem; color: #3730a3; margin-top: 1.5rem; margin-bottom: .5rem; }
+    p { margin-bottom: .75rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; }
+    th, td { border: 1px solid #e5e7eb; padding: .6rem .8rem; text-align: left; }
+    th { background: #f1f0ff; color: #312e81; font-weight: 600; }
+    tr:nth-child(even) td { background: #fafafe; }
+    pre { background: #1e1e2e; color: #cdd6f4; border-radius: 10px; padding: 1rem 1.25rem; overflow-x: auto; margin: .75rem 0 1rem; font-size: .85rem; line-height: 1.6; }
+    code { font-family: "Cascadia Code", "Fira Code", Consolas, monospace; }
+    p code, li code { background: #f1f0ff; color: #4f46e5; padding: .15rem .4rem; border-radius: 4px; font-size: .88em; }
+    ul, ol { margin: .5rem 0 1rem 1.5rem; }
+    li { margin-bottom: .3rem; }
+    strong { color: #312e81; }
+    .badge { display: inline-block; background: #6366f1; color: #fff; font-size: .75rem; padding: .2rem .6rem; border-radius: 999px; margin-left: .5rem; vertical-align: middle; }
+    .tree { background: #f8f9fc; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem 1.25rem; font-family: monospace; font-size: .85rem; white-space: pre; overflow-x: auto; margin: .75rem 0 1rem; line-height: 1.7; }
+    @media (max-width: 640px) { .container { padding: 1.5rem; } h1 { font-size: 1.4rem; } }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<h1>年齢・日数計算アプリ 作成手順書</h1>
+
+<h2>概要</h2>
+<p>Cursor + Vite + React + TailwindCSS で年齢・日数計算Webアプリを作成し、GitHub + Vercel で公開するまでの手順をまとめたものです。</p>
+
+<hr>
+
+<h2>使用ツール</h2>
+<table>
+  <tr><th>ツール</th><th>用途</th></tr>
+  <tr><td>Cursor</td><td>コード作成・編集（AI搭載IDE）</td></tr>
+  <tr><td>Vite</td><td>開発サーバー・ビルドツール</td></tr>
+  <tr><td>React + TypeScript</td><td>UIフレームワーク</td></tr>
+  <tr><td>TailwindCSS v4</td><td>スタイリング</td></tr>
+  <tr><td>GitHub</td><td>ソースコード管理</td></tr>
+  <tr><td>Vercel</td><td>ホスティング・自動デプロイ</td></tr>
+</table>
+
+<hr>
+
+<h2>STEP 1：プロジェクト作成</h2>
+<pre><code>npm create vite@latest date-calculator -- --template react-ts
+cd date-calculator
+npm install</code></pre>
+
+<h2>STEP 2：TailwindCSS インストール</h2>
+<pre><code>npm install -D tailwindcss @tailwindcss/vite</code></pre>
+
+<h3>vite.config.ts に追加</h3>
+<pre><code>import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});</code></pre>
+
+<h3>src/index.css の先頭に追加</h3>
+<pre><code>@import "tailwindcss";</code></pre>
+
+<h2>STEP 3：ファイル構成</h2>
+<div class="tree">date-calculator/
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── vercel.json            ← Vercelビルド設定
+└── src/
+    ├── main.tsx           ← エントリーポイント
+    ├── App.tsx            ← メインコンポーネント（タブ管理）
+    ├── index.css          ← TailwindCSS + カスタムスタイル
+    ├── vite-env.d.ts      ← Vite型定義
+    ├── components/
+    │   ├── Header.tsx              ← ヘッダー（ユーザー名表示）
+    │   ├── DarkModeToggle.tsx      ← ダークモード切替ボタン
+    │   ├── TabButton.tsx           ← タブ切替ボタン
+    │   ├── AgeCalculator.tsx       ← 年齢計算タブ
+    │   ├── DateDiffCalculator.tsx  ← 日数計算タブ
+    │   ├── DateAddCalculator.tsx   ← 日付加算タブ
+    │   ├── MilestoneCalculator.tsx ← 記念日計算タブ
+    │   ├── Toast.tsx               ← 通知トースト
+    │   └── NameSettingModal.tsx    ← 名前設定モーダル
+    ├── hooks/
+    │   ├── useUserName.ts          ← ユーザー名管理
+    │   └── useDarkMode.ts          ← ダークモード管理
+    └── utils/
+        └── dateUtils.ts            ← 日付計算ユーティリティ</div>
+
+<h2>STEP 4：動作確認</h2>
+<pre><code>npm run dev
+# → http://localhost:5173/ で確認</code></pre>
+
+<h2>STEP 5：GitHubにリポジトリ作成 &amp; Push</h2>
+
+<h3>5-1. GitHubでリポジトリ作成</h3>
+<ol>
+  <li><a href="https://github.com/new">https://github.com/new</a> を開く</li>
+  <li>Repository name: <code>date-calculator</code></li>
+  <li>Public を選択</li>
+  <li>README等のチェックはすべて外す</li>
+  <li>「Create repository」をクリック</li>
+</ol>
+
+<h3>5-2. ローカルからPush</h3>
+<pre><code>git init
+git add -A
+git commit -m "feat: 年齢・日数計算Webアプリ初期実装"
+git remote add origin https://github.com/あなたのユーザー名/date-calculator.git
+git branch -M main
+git push -u origin main</code></pre>
+
+<h2>STEP 6：Vercelでデプロイ</h2>
+<ol>
+  <li><a href="https://vercel.com/">https://vercel.com/</a> にGitHubアカウントでログイン</li>
+  <li>「Add New Project」をクリック</li>
+  <li><code>date-calculator</code> リポジトリを選択して「Import」</li>
+  <li>設定はデフォルトのまま「Deploy」をクリック</li>
+  <li>1〜2分で公開完了</li>
+  <li>公開URL（例: <code>https://date-calculator-xxxxx.vercel.app</code>）が発行される</li>
+</ol>
+
+<h2>STEP 7：以降の更新方法</h2>
+<p>コードを修正したら以下を実行するだけで自動デプロイされる：</p>
+<pre><code>git add -A
+git commit -m "変更内容の説明"
+git push</code></pre>
+<p>Vercelが自動検知して再ビルド・再デプロイしてくれる。</p>
+
+<hr>
+
+<h2>実装済み機能一覧</h2>
+<ul>
+  <li><strong>年齢計算</strong>: 生年月日から年齢（年・月・日）、経過日数・週数・月数を表示</li>
+  <li><strong>日数計算</strong>: 2つの日付間の差を日数・週数・時間・分で表示</li>
+  <li><strong>日付加算</strong>: 基準日に日・週・月・年を加算/減算して結果を表示</li>
+  <li><strong>記念日計算</strong>: 基準日から100日・1000日・10000日等の記念日一覧を表示</li>
+  <li><strong>星座・干支</strong>: 生年月日から自動判定</li>
+  <li><strong>次の誕生日カウントダウン</strong>: 誕生日まであと何日か表示</li>
+  <li><strong>よく使う計算ショートカット</strong>: 1週間後・30日後・1年後等をワンタップで計算</li>
+  <li><strong>ダークモード</strong>: システム設定追従 + 手動トグル</li>
+  <li><strong>ユーザー名カスタマイズ</strong>: 環境変数固定 / URLパラメータ / モーダル設定</li>
+  <li><strong>レスポンシブ対応</strong>: PC・スマホ</li>
+</ul>
+
+<hr>
+
+<h2>補足：主要な技術ポイント</h2>
+<ul>
+  <li>TailwindCSS v4 は <code>@tailwindcss/vite</code> プラグインで統合（v3以前とは設定方法が異なる）</li>
+  <li>ダークモードは <code>class</code> ベース（HTMLのルートに <code>dark</code> クラスを付与）</li>
+  <li>環境変数は <code>VITE_</code> プレフィックスが必須（Viteの仕様）</li>
+  <li><code>vercel.json</code> でビルドコマンドと出力ディレクトリを明示指定</li>
+  <li>日付計算は純粋なJavaScript Date APIで実装（外部ライブラリ不要）</li>
+  <li>タブ切替でUIを分割し、機能ごとに独立したコンポーネントとして管理</li>
+</ul>
+
+</div>
+</body>
+</html>

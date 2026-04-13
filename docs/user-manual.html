@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>年齢・日数計算アプリ 操作説明書</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif; line-height: 1.8; color: #1a1a2e; background: #f8f9fa; padding: 0; }
+  .header { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: #fff; padding: 48px 24px; text-align: center; }
+  .header h1 { font-size: 28px; margin-bottom: 8px; text-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+  .header p { font-size: 15px; opacity: 0.9; }
+  .container { max-width: 800px; margin: 0 auto; padding: 32px 24px 64px; }
+  h2 { font-size: 22px; color: #e74c8b; border-left: 4px solid #e74c8b; padding-left: 12px; margin: 40px 0 16px; }
+  h3 { font-size: 17px; color: #333; margin: 24px 0 8px; }
+  p, li { font-size: 15px; margin-bottom: 8px; }
+  ul, ol { padding-left: 24px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 14px; }
+  th, td { border: 1px solid #dee2e6; padding: 10px 14px; text-align: left; }
+  th { background: #fef0f5; color: #444; font-weight: 600; }
+  tr:nth-child(even) td { background: #fffbfd; }
+  .url-box { background: #fef0f5; border: 2px solid #e74c8b; border-radius: 10px; padding: 20px; margin: 16px 0; text-align: center; }
+  .url-box a { color: #e74c8b; font-size: 18px; font-weight: 700; word-break: break-all; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 16px 0; }
+  .feature-card { background: #fff; border: 1px solid #e8eaed; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .feature-card .icon { font-size: 32px; margin-bottom: 8px; }
+  .feature-card .title { font-weight: 700; font-size: 15px; color: #333; }
+  .feature-card .desc { font-size: 13px; color: #666; margin-top: 4px; }
+  .disclaimer { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 24px; margin: 24px 0; }
+  .disclaimer h3 { margin-top: 0; }
+  .disclaimer li { font-size: 14px; color: #555; }
+  .footer { text-align: center; padding: 32px; color: #999; font-size: 13px; border-top: 1px solid #eee; margin-top: 40px; }
+  @media (max-width: 600px) { .header h1 { font-size: 22px; } .container { padding: 20px 16px 48px; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>年齢・日数計算アプリ</h1>
+  <p>操作説明書</p>
+</div>
+
+<div class="container">
+
+  <h2>商品の特徴</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="icon">🎂</div>
+      <div class="title">年齢計算</div>
+      <div class="desc">生年月日から詳細な年齢・経過日数を表示</div>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📅</div>
+      <div class="title">日数計算</div>
+      <div class="desc">2つの日付間の差を多様な単位で計算</div>
+    </div>
+    <div class="feature-card">
+      <div class="icon">➕</div>
+      <div class="title">日付加算</div>
+      <div class="desc">基準日から指定日数を加算・減算</div>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🎉</div>
+      <div class="title">記念日計算</div>
+      <div class="desc">1000日記念等の特別な日を一覧表示</div>
+    </div>
+  </div>
+
+  <h2>アプリを開く</h2>
+  <div class="url-box">
+    <p style="margin-bottom: 8px; font-size: 14px; color: #555;">以下のURLをクリックしてアプリを開きます</p>
+    <a href="https://date-calculator-phi.vercel.app" target="_blank">https://date-calculator-phi.vercel.app</a>
+  </div>
+  <p>PC・スマートフォン・タブレットのブラウザからアクセスできます。インストール不要です。</p>
+
+  <h2>操作説明</h2>
+
+  <h3>タブ切替</h3>
+  <p>画面上部に4つのタブがあります。タップで切り替えできます。</p>
+  <table>
+    <tr><th>タブ</th><th>機能</th></tr>
+    <tr><td>🎂 年齢計算</td><td>生年月日から年齢・経過日数を計算</td></tr>
+    <tr><td>📅 日数計算</td><td>2つの日付間の差を計算</td></tr>
+    <tr><td>➕ 日付加算</td><td>基準日に日数を加算・減算</td></tr>
+    <tr><td>🎉 記念日</td><td>生誕1000日等の記念日一覧</td></tr>
+  </table>
+
+  <h3>年齢計算</h3>
+  <ol>
+    <li>「生年月日」欄に誕生日を入力します。</li>
+    <li>「計算」ボタンをクリックします。</li>
+  </ol>
+  <table>
+    <tr><th>表示項目</th><th>内容</th></tr>
+    <tr><td>現在の年齢</td><td>○歳○ヶ月○日</td></tr>
+    <tr><td>生きた日数</td><td>出生日からの日数</td></tr>
+    <tr><td>生きた週数 / 月数</td><td>出生日からの週数・月数</td></tr>
+    <tr><td>次の誕生日</td><td>日付と曜日、あと○日</td></tr>
+    <tr><td>星座 / 干支</td><td>自動判定して表示</td></tr>
+  </table>
+
+  <h3>日数計算</h3>
+  <ol>
+    <li>「開始日」と「終了日」を入力します（終了日のデフォルトは今日）。</li>
+    <li>「日数を計算」ボタンをクリックします。</li>
+  </ol>
+  <p>日数・年月日・週数・時間・分の形式で表示されます。</p>
+
+  <h3>日付加算</h3>
+  <ol>
+    <li>「基準日」を入力します（デフォルトは今日）。</li>
+    <li>「加算」または「減算」を選択します。</li>
+    <li>数値と単位（日・週・ヶ月・年）を入力します。</li>
+    <li>「計算」ボタンをクリックします。</li>
+  </ol>
+  <p>よく使うショートカット（1週間後、30日後、半年後、1年後 等）も用意されています。</p>
+
+  <h3>記念日計算</h3>
+  <ol>
+    <li>「基準日」に誕生日や記念日を入力します。</li>
+    <li>「計算」ボタンをクリックします。</li>
+  </ol>
+  <p>100日目、365日目、1000日目、10000日目など、主要な記念日の日付が一覧で表示されます。各記念日には「済」（過去）または「これから」（未来）のラベルが表示されます。</p>
+
+  <h3>ダークモード</h3>
+  <p>画面右上の丸いボタンで切り替えできます。初回アクセス時はお使いの端末のシステム設定に自動追従します。手動で切り替えた場合、次回以降もその設定が記憶されます。</p>
+
+  <div class="disclaimer">
+    <h3>免責事項</h3>
+    <ul>
+      <li>本アプリは無保証で提供されます。利用によって生じた損害について、開発者は一切の責任を負いません。</li>
+      <li>計算結果は参考値です。法的手続きや公式書類には使用しないでください。</li>
+      <li>入力されたデータはお使いのブラウザ内でのみ処理され、外部サーバーには送信されません。</li>
+      <li>推奨ブラウザ：Google Chrome / Microsoft Edge / Safari / Firefox の最新版</li>
+      <li>アプリの仕様は予告なく変更される場合があります。</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  &copy; OFFICENN
+</div>
+
+</body>
+</html>

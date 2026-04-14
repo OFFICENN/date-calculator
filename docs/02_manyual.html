@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>年齢・日数計算アプリ 操作説明書</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "BIZ UDPGothic", Meiryo, sans-serif; line-height: 1.8; color: #1a1a2e; background: #f8f9fc; padding: 2rem 1rem; }
+    .container { max-width: 860px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.06); padding: 3rem; }
+    h1 { font-size: 1.8rem; color: #4f46e5; border-bottom: 3px solid #4f46e5; padding-bottom: .5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.35rem; color: #312e81; margin-top: 2.5rem; margin-bottom: .75rem; padding-left: .75rem; border-left: 4px solid #6366f1; }
+    h3 { font-size: 1.1rem; color: #3730a3; margin-top: 1.5rem; margin-bottom: .5rem; }
+    h4 { font-size: 1rem; color: #4338ca; margin-top: 1.25rem; margin-bottom: .4rem; }
+    p { margin-bottom: .75rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; }
+    th, td { border: 1px solid #e5e7eb; padding: .6rem .8rem; text-align: left; }
+    th { background: #f1f0ff; color: #312e81; font-weight: 600; }
+    tr:nth-child(even) td { background: #fafafe; }
+    pre { background: #1e1e2e; color: #cdd6f4; border-radius: 10px; padding: 1rem 1.25rem; overflow-x: auto; margin: .75rem 0 1rem; font-size: .85rem; line-height: 1.6; }
+    code { font-family: "Cascadia Code", "Fira Code", Consolas, monospace; }
+    p code, li code { background: #f1f0ff; color: #4f46e5; padding: .15rem .4rem; border-radius: 4px; font-size: .88em; }
+    ul, ol { margin: .5rem 0 1rem 1.5rem; }
+    li { margin-bottom: .3rem; }
+    strong { color: #312e81; }
+    .toc { background: #f8f9fc; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+    .toc h2 { margin-top: 0; border: none; padding-left: 0; font-size: 1.1rem; }
+    .toc ol { margin-bottom: 0; }
+    .toc a { color: #4f46e5; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .note { background: #fef3c7; border-left: 4px solid #f59e0b; padding: .75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: .9rem; }
+    .tree { background: #f8f9fc; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem 1.25rem; font-family: monospace; font-size: .85rem; white-space: pre; overflow-x: auto; margin: .75rem 0 1rem; line-height: 1.7; }
+    @media (max-width: 640px) { .container { padding: 1.5rem; } h1 { font-size: 1.4rem; } }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<h1>年齢・日数計算アプリ 操作説明書</h1>
+
+<div class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#sec1">アプリの基本操作</a></li>
+    <li><a href="#sec2">年齢計算</a></li>
+    <li><a href="#sec3">日数計算</a></li>
+    <li><a href="#sec4">日付加算</a></li>
+    <li><a href="#sec5">記念日計算</a></li>
+    <li><a href="#sec6">ダークモード</a></li>
+    <li><a href="#sec7">名前のカスタマイズ</a></li>
+    <li><a href="#sec8">顧客への配布・販売方法</a></li>
+    <li><a href="#sec9">アプリの更新方法</a></li>
+  </ol>
+</div>
+
+<h2 id="sec1">1. アプリの基本操作</h2>
+
+<h3>タブ切替</h3>
+<p>画面上部に4つのタブがあります。タップで切り替えできます：</p>
+<table>
+  <tr><th>タブ</th><th>機能</th></tr>
+  <tr><td>🎂 年齢計算</td><td>生年月日から年齢・経過日数を計算</td></tr>
+  <tr><td>📅 日数計算</td><td>2つの日付間の差を計算</td></tr>
+  <tr><td>➕ 日付加算</td><td>基準日に日数を加算・減算</td></tr>
+  <tr><td>🎉 記念日</td><td>生誕1000日等の記念日一覧</td></tr>
+</table>
+
+<hr>
+
+<h2 id="sec2">2. 年齢計算</h2>
+
+<h3>使い方</h3>
+<ol>
+  <li>「生年月日」欄に誕生日を入力</li>
+  <li>「計算」ボタンをクリック</li>
+</ol>
+
+<h3>表示される情報</h3>
+<table>
+  <tr><th>項目</th><th>内容</th></tr>
+  <tr><td>現在の年齢</td><td>○歳○ヶ月○日</td></tr>
+  <tr><td>生きた日数</td><td>出生日からの日数</td></tr>
+  <tr><td>生きた週数</td><td>出生日からの週数</td></tr>
+  <tr><td>生きた月数</td><td>出生日からの月数</td></tr>
+  <tr><td>次の誕生日</td><td>日付と曜日</td></tr>
+  <tr><td>誕生日まで</td><td>あと○日</td></tr>
+  <tr><td>星座</td><td>誕生日から自動判定</td></tr>
+  <tr><td>干支</td><td>生まれ年から自動判定</td></tr>
+</table>
+
+<hr>
+
+<h2 id="sec3">3. 日数計算</h2>
+
+<h3>使い方</h3>
+<ol>
+  <li>「開始日」欄に開始日を入力</li>
+  <li>「終了日」欄に終了日を入力（デフォルトは今日）</li>
+  <li>「日数を計算」ボタンをクリック</li>
+</ol>
+
+<h3>表示される情報</h3>
+<table>
+  <tr><th>項目</th><th>内容</th></tr>
+  <tr><td>日数</td><td>2つの日付間の合計日数</td></tr>
+  <tr><td>年月日</td><td>○年○ヶ月○日 形式</td></tr>
+  <tr><td>週数</td><td>合計週数</td></tr>
+  <tr><td>時間</td><td>合計時間</td></tr>
+  <tr><td>分</td><td>合計分</td></tr>
+</table>
+
+<hr>
+
+<h2 id="sec4">4. 日付加算</h2>
+
+<h3>使い方</h3>
+<ol>
+  <li>「基準日」を入力（デフォルトは今日）</li>
+  <li>「加算」または「減算」を選択</li>
+  <li>数値と単位（日・週・ヶ月・年）を入力</li>
+  <li>「計算」ボタンをクリック</li>
+</ol>
+
+<h3>よく使う計算</h3>
+<p>画面下部に以下のショートカットがあります：</p>
+<table>
+  <tr><th>ショートカット</th><th>内容</th></tr>
+  <tr><td>1週間後</td><td>基準日 + 7日</td></tr>
+  <tr><td>2週間後</td><td>基準日 + 14日</td></tr>
+  <tr><td>30日後</td><td>基準日 + 30日</td></tr>
+  <tr><td>90日後</td><td>基準日 + 90日</td></tr>
+  <tr><td>半年後</td><td>基準日 + 180日</td></tr>
+  <tr><td>1年後</td><td>基準日 + 365日</td></tr>
+</table>
+
+<hr>
+
+<h2 id="sec5">5. 記念日計算</h2>
+
+<h3>使い方</h3>
+<ol>
+  <li>「基準日」に誕生日や記念日を入力</li>
+  <li>「計算」ボタンをクリック</li>
+</ol>
+
+<h3>表示される記念日</h3>
+<p>次の記念日までのカウントダウンと、以下の一覧が表示されます：</p>
+<table>
+  <tr><th>記念日</th><th>日数</th></tr>
+  <tr><td>100日目</td><td>100日</td></tr>
+  <tr><td>365日目（1年）</td><td>365日</td></tr>
+  <tr><td>500日目</td><td>500日</td></tr>
+  <tr><td>1,000日目</td><td>1,000日</td></tr>
+  <tr><td>2,000日目</td><td>2,000日</td></tr>
+  <tr><td>3,000日目</td><td>3,000日</td></tr>
+  <tr><td>5,000日目</td><td>5,000日</td></tr>
+  <tr><td>7,777日目</td><td>7,777日</td></tr>
+  <tr><td>10,000日目</td><td>10,000日</td></tr>
+  <tr><td>15,000日目</td><td>15,000日</td></tr>
+  <tr><td>20,000日目</td><td>20,000日</td></tr>
+  <tr><td>25,000日目</td><td>25,000日</td></tr>
+  <tr><td>30,000日目</td><td>30,000日</td></tr>
+</table>
+<p>各記念日には「済」（過去）または「これから」（未来）のラベルが表示されます。</p>
+
+<hr>
+
+<h2 id="sec6">6. ダークモード</h2>
+<p>画面右上の丸いボタンで切り替えできます。</p>
+<ul>
+  <li>🌙（月アイコン）→ ダークモードに切替</li>
+  <li>☀️（太陽アイコン）→ ライトモードに切替</li>
+</ul>
+<p>初回アクセス時は、お使いのPC/スマホのシステム設定に自動追従します。<br>手動で切り替えた場合、次回以降もその設定が記憶されます。</p>
+
+<hr>
+
+<h2 id="sec7">7. 名前のカスタマイズ</h2>
+<p>アプリのタイトルに「○○さんの年齢・日数計算」と表示する機能です。3つの方法があります。</p>
+
+<h3>方法A：環境変数で固定する（配布・販売用）★推奨</h3>
+<p>Vercelの環境変数 <code>VITE_OWNER_NAME</code> に名前を設定します。この場合、利用者は名前を変更できません。</p>
+<p>→ 詳細は「8. 顧客への配布・販売方法」を参照</p>
+
+<h3>方法B：URLパラメータで設定する</h3>
+<pre><code>https://あなたのURL.vercel.app/?name=田中太郎</code></pre>
+<p>URLに <code>?name=○○</code> をつけてアクセスすると名前が表示されます。ブラウザに記憶されるので、次回以降はパラメータなしでも表示されます。</p>
+<div class="note">※ 環境変数が設定されていない場合のみ有効</div>
+
+<h3>方法C：アプリ画面から設定する</h3>
+<p>画面最下部の「名前を設定する」リンクから設定モーダルを開けます。</p>
+<div class="note">※ 環境変数が設定されていない場合のみ表示</div>
+
+<hr>
+
+<h2 id="sec8">8. 顧客への配布・販売方法</h2>
+
+<h3>仕組み</h3>
+<div class="tree">GitHubリポジトリ（1つだけ）
+     │
+     │ 同じリポジトリから複数プロジェクトを作成
+     │
+     ├── Vercelプロジェクト① あなた用（テスト・開発）
+     │     環境変数なし → 名前は自由に変更可能
+     │     URL: date-calculator-dev.vercel.app
+     │
+     ├── Vercelプロジェクト② 田中さん用
+     │     VITE_OWNER_NAME = 田中太郎
+     │     URL: date-calculator-tanaka.vercel.app
+     │
+     └── Vercelプロジェクト③ 鈴木さん用
+           VITE_OWNER_NAME = 鈴木花子
+           URL: date-calculator-suzuki.vercel.app</div>
+
+<h3>新しい顧客を追加する手順（約3分）</h3>
+
+<h4>ステップ1：Vercelで新規プロジェクト作成</h4>
+<ol>
+  <li><a href="https://vercel.com/new">https://vercel.com/new</a> を開く</li>
+  <li>GitHubリポジトリ一覧から <code>date-calculator</code> を選択して「Import」</li>
+  <li><strong>プロジェクト名</strong> を変更する（例: <code>date-calculator-tanaka</code>）</li>
+</ol>
+
+<h4>ステップ2：環境変数を設定</h4>
+<ol>
+  <li>画面の「Environment Variables」セクションを開く</li>
+  <li>以下を入力：
+    <ul>
+      <li><strong>Key</strong>: <code>VITE_OWNER_NAME</code></li>
+      <li><strong>Value</strong>: 顧客の名前（例: <code>田中太郎</code>）</li>
+    </ul>
+  </li>
+  <li>「Add」をクリック</li>
+</ol>
+
+<h4>ステップ3：デプロイ</h4>
+<ol>
+  <li>「Deploy」をクリック</li>
+  <li>1〜2分で公開完了</li>
+  <li>発行されたURL（例: <code>https://date-calculator-tanaka.vercel.app</code>）を顧客に共有</li>
+</ol>
+
+<h3>顧客に表示される画面</h3>
+<ul>
+  <li>タイトル：「田中太郎さんの年齢・日数計算」（固定）</li>
+  <li>名前変更ボタン：非表示（変更不可）</li>
+  <li>フッター：「© OFFICENN」</li>
+  <li>全機能（年齢計算・日数計算・日付加算・記念日・ダークモード等）が利用可能</li>
+</ul>
+
+<h3>既存顧客の名前を変更する場合</h3>
+<ol>
+  <li>Vercelダッシュボードで該当プロジェクトを開く</li>
+  <li>「Settings」→「Environment Variables」</li>
+  <li><code>VITE_OWNER_NAME</code> の値を変更して「Save」</li>
+  <li>「Deployments」タブ → 最新デプロイの「...」→「Redeploy」</li>
+</ol>
+
+<h3>注意事項</h3>
+<ul>
+  <li>Vercel無料プランのプロジェクト数は無制限</li>
+  <li>GitHubリポジトリは1つだけでOK</li>
+  <li>コードを更新してPushすると、全顧客分が自動で最新版に更新される</li>
+  <li>顧客ごとに独立したURLが発行される</li>
+</ul>
+
+<hr>
+
+<h2 id="sec9">9. アプリの更新方法</h2>
+
+<h3>日常の更新フロー</h3>
+<div class="tree">① Cursorでコードを修正
+② ターミナルで以下を実行：
+     git add -A
+     git commit -m "変更内容の説明"
+     git push
+③ Vercelが自動検知 → 全プロジェクトが自動再デプロイ
+④ 1〜2分で更新完了</div>
+
+<h3>特定の顧客だけ更新したくない場合</h3>
+<p>Vercelダッシュボードで該当プロジェクトの自動デプロイをオフにできます：<br>Settings → Git → Auto Deploy → 無効化</p>
+
+<hr>
+
+<h2>URL一覧（管理用テンプレート）</h2>
+<table>
+  <tr><th>顧客名</th><th>プロジェクト名</th><th>URL</th><th>作成日</th></tr>
+  <tr><td>（テスト用）</td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+</table>
+
+</div>
+</body>
+</html>
